@@ -37,3 +37,25 @@ date +"%Y-%m-%dT%H:%M:%S%z"
 date +"%Y-%m-%dT%H:%M:%S%z"
 # <2026-01-03T13:21:00+0900>
 python3 p_04_create_dist_zip.py && unzip -l obsidian-mcp-gemini3.zip
+# <2026-01-03T14:26:02+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T14:26:13+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T14:28:19+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T14:28:30+0900>
+npm run build
+# <2026-01-03T15:34:43+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T15:34:47+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T15:34:52+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T15:36:00+0900>
+npm run build
+# <2026-01-03T15:38:13+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T15:40:29+0900>
+date +"%Y-%m-%dT%H:%M:%S%z"
+# <2026-01-03T15:41:01+0900>
+npm run build && python3 p_04_create_dist_zip.py && unzip -l obsidian-mcp-gemini3.zip

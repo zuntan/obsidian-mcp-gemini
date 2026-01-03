@@ -251,6 +251,16 @@ export class McpServer {
                 };
             } else if (message.method === 'notifications/initialized') {
                 this.log('Client initialized.');
+                // Instructions for the client to retrieve initial prompts
+                const instruction = {
+                    jsonrpc: "2.0",
+                    method: "notifications/message",
+                    params: {
+                        text: "Please retrieve the following prompts using prompts/get: 'GEMINI.md' and 'SystemPrompt'."
+                    }
+                };
+                sendCallback(instruction);
+                this.log("Sent prompt retrieval instructions to client.");
             } else if (message.method === 'ping') {
                 response = {
                     jsonrpc: "2.0",
@@ -268,7 +278,7 @@ export class McpServer {
                                 description: "Returns the content of GEMINI.md in the current workspace location."
                             },
                             {
-                                name: "system_prompt",
+                                name: "SystemPrompt",
                                 description: "Returns the configured system prompt."
                             }
                         ]
@@ -293,7 +303,7 @@ export class McpServer {
                             ]
                         }
                     };
-                } else if (name === "system_prompt") {
+                } else if (name === "SystemPrompt") {
                     const content = await this.getSystemPromptContent();
                     response = {
                         jsonrpc: "2.0",
@@ -568,6 +578,12 @@ export class McpServer {
                  }
             }
 
+            resources.push({
+                uri: `gemini://SystemPrompt`,
+                name: "SystemPrompt",
+                description: "System Prompt (Note + Add)"
+            });
+
             const ignorePatterns = this.plugin.settings.resourceIgnorePatterns
     			.split('\n')
     			.map(p => p.trim())
@@ -600,6 +616,11 @@ export class McpServer {
         private async readResource(uri: string): Promise<string | null> {
             if (!uri.startsWith("gemini://")) return null;
             const name = uri.substring("gemini://".length);
+
+            if (name === "SystemPrompt") {
+                return await this.getSystemPromptContent();
+            }
+
             const filePath = this.getFilePath(name);
 
             const file = this.plugin.app.vault.getAbstractFileByPath(filePath);
@@ -623,7 +644,8 @@ export class McpServer {
 			"GEMINI_OUTPUT.md",
 			"GEMINI_CHAT.md",
             "GEMINI_SUMMARY.md",
-            "GEMINI.md"
+            "GEMINI.md",
+            "SystemPrompt"
         ];
 
         if (geminiFiles.includes(name)) return true;
@@ -651,6 +673,11 @@ export class McpServer {
         if (!name) throw new Error("Name is required");
         if (!this.isValidResource(name)) throw new Error("Invalid resource name or access denied");
 
+        if (name === "SystemPrompt") {
+            const content = await this.getSystemPromptContent();
+            return { content: [{ type: "text", text: content }] };
+        }
+
         const filePath = this.getFilePath(name);
         const file = this.plugin.app.vault.getAbstractFileByPath(filePath);
 
@@ -666,8 +693,8 @@ export class McpServer {
             throw new Error("Name and content are required");
         }
 
-        if (name === "GEMINI.md") {
-             throw new Error("Writing to GEMINI.md is not allowed via write_resource.");
+        if (name === "GEMINI.md" || name === "SystemPrompt") {
+             throw new Error(`Writing to ${name} is not allowed via write_resource.`);
         }
 
         const isValid = this.isValidResource(name);

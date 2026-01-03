@@ -12,8 +12,8 @@ interface PluginSettings {
 
 const VIEW_TYPE_GEMINI = "gemini-workspace-view";
 
-const DEFAULT_COMMAND_TEXT = `Retrieve prompt from Obsidian (propmp/get system_prompt)
-Retrieve GEMINI.md from Obsidian (propmp/get GEMINI.md)
+const DEFAULT_COMMAND_TEXT = `Retrieve prompt from Obsidian (SystemPrompt)
+Retrieve GEMINI.md from Obsidian (GEMINI.md)
 Output plan to Obsidian (GEMINI_PLAN.md)
 Output session response to Obsidian (GEMINI_RESP.md)
 Output session summary to Obsidian (GEMINI_SUMMARY.md)
@@ -408,7 +408,7 @@ class GeminiWorkspaceView extends ItemView {
 
 	buildMcpClientConfigArea(container: Element) {
 		const area = container.createEl("div", { cls: "gemini-section-area" });
-		area.createEl("h3", { text: "MCP Client Configration" });
+		area.createEl("h3", { text: "MCP Client Configuration" });
 
 		const tabsContainer = area.createEl("div", { cls: "gemini-tabs" });
 		const contentContainer = area.createEl("div", { cls: "gemini-tab-content" });

@@ -13,8 +13,8 @@
 - テキストボックスを設置、名称を「Command Text」とする。15行程度。横幅は最大とする
   - 初期値、以下を英訳する
       ```
-      Obsidianよりプロンプトを取得（propmp/get system_prompt）
-      ObsidianよりGEMINI.mdを取得（propmp/get GEMINI.md）
+      Obsidianよりプロンプトを取得（SystemPrompt）
+      ObsidianよりGEMINI.mdを取得（GEMINI.md）
       Obsidianへプランを出力（GEMINI_PLAN.md）
       Obsidianへセッションの応答を出力（GEMINI_RESP.md）
       Obsidianへセッションの要約を出力（GEMINI_SUMMARY.md）
@@ -78,7 +78,7 @@
   - Command Text の内容に対し、一行ごとに箇条書き式で テキストを表示する。
     - テキスト部分はリンク状とし、クリックされたらテキストをクリップボードにコピーする。コピーしたらトースト表示をする。
     
-- 以下のタブエリアを設ける。タイトルを「MCP Client Configration」とする。各タブにはテキストを設置する。TCPポート設定が変更されたら即座にテキストを更新する。
+- 以下のタブエリアを設ける。タイトルを「MCP Client Configuration」とする。各タブにはテキストを設置する。TCPポート設定が変更されたら即座にテキストを更新する。
   - nc
     ```
     gemini mcp add obsidianMcpServer nc "127.0.0.1" "28088"
@@ -115,12 +115,13 @@
     - カテゴリ:prompt
       - 名称:GEMINI.md
         - GEMINI.md ファイルの内容を返す
-      - 名称:system_prompt
+      - 名称:SystemPrompt
         - 「System Prompt Note」ファイルの内容と、「System Prompt Add」のテキスト内容を結合して返す
     - カテゴリ:resources
       - 以下を対象とする
         - 「選択されているフォルダ」直下のファイル（サブフォルダ配下のファイルは対象外とする）
         - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_CHAT.md ファイル
+        - SystemPrompt 
         - 上記以外で「Resource ignore patterns」の各行で定義されている正規表現パターンにマッチしないファイル
     - カテゴリ:tools
       - 名称:`read_resource`
@@ -130,6 +131,7 @@
           - 指定のファイルの内容を返す。
           - 対象ファイルは、Resourceの対象と同じとし、それ以外が指定された場合はエラーとする。
           - 対象ファイルが存在しない場合は空文字を返す
+          - SystemPromptが指定された場合は、「System Prompt Note」ファイルの内容と、「System Prompt Add」のテキスト内容を結合して返す
       - 名称:`write_resource`
         - パラメーター:Resource名（必須）
         - パラメーター:content（必須）
@@ -137,7 +139,7 @@
         - 動作
           - 指定のファイルの内容を content 値で書き換える。
           - 対象ファイルは、Resourceの対象と同じとし、それ以外が指定された場合はエラーとする。
-          - GEMINI.mdが指定された場合はエラーとする。
+          - GEMINI.md, SystemPrompt が指定された場合はエラーとする。
           - 対象ファイルが存在しない場合は新規作成する。
       - 名称:`append_resource`
         - パラメーター:Resource名（必須）
@@ -164,7 +166,9 @@
 
 - MCPクライアントからのリクエストが来たら、「MCP Log」のテキストエリアにそれを追記する。その際テキストボックスを最下行にスクロールさせる。
   - 出力は、時刻：リクエスト とする。
-  
+
+- MCPクライアントが接続したとき、GEMINI.md と SystemPrompt を取得するように、MCPクライアントへ指示する。
+
 - プラグイン起動時は、TCP機能を OFF とする。
 
 - プラグインが無効となった場合、MCPサーバーの機能を停止する。

@@ -30,3 +30,7 @@
 [x] 28. GEMINI.md修正への対応 (ポート番号変更、設定表示コマンドの形式変更、ラベル修正、日時フォーマット修正) ( 2026-01-03T13:15:00+09:00 ) { 28 } /* ポート番号を28088/28089に変更、MCP Client Configrationの表示を単一行コマンドに修正、日時フォーマットをyyyy-MM-dd hh:mm-ssに修正。 */
 [x] 29. GEMINI.md再修正への対応 (日時フォーマットをコロンに戻す、Command Textの綴り調整) ( 2026-01-03T13:16:00+09:00 ) { 29 } /* get_datetimeのフォーマットをhh:mm:ssに戻し、Command Text内のprompt/getをpropmp/getに変更。 */
 [x] 30. 配布用 zip ファイル作成スクリプト (p_04_create_dist_zip.py) の作成と実行 ( 2026-01-03T13:21:00+09:00 ) { 30 } /* obsidian-mcp-gemini3.zip を作成。zip内をディレクトリ構成（obsidian-mcp-gemini3/）に変更。 */
+[x] 31. Worker: クライアント接続時に GEMINI.md と system_prompt の取得を指示する機能の実装 ( 2026-01-03T14:26:00+09:00 ) { 31 } /* notifications/initialized 受信時に notifications/message で取得指示を送信。 */
+[x] 32. Worker: system_prompt から SystemPrompt への名称変更とリソース対応、read_resource/write_resource の制限追加 ( 2026-01-03T15:35:00+09:00 ) { 32 } /* prompts, resources, tools で SystemPrompt に対応。 */
+[x] 33. GEMINI.md修正への対応 (Command Text初期値変更、Configration -> Configuration のスペル修正) ( 2026-01-03T15:41:00+09:00 ) { 33 } /* main.ts の DEFAULT_COMMAND_TEXT とエリアタイトルを修正。 */
+[x] 34. ビルドと配布用 zip ファイルの作成 ( 2026-01-03T15:42:00+09:00 ) { 34 } /* npm run build と p_04_create_dist_zip.py を実行。 */
