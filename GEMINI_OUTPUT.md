@@ -1,0 +1,15 @@
+- `GEMINI_clean.sh`
+  - GEMINIログクリーンファイル
+    - このスクリプトは、`GEMINI_PLAN.md`, `GEMINI_PLAN_FIRST.md`, `GEMINI_RESP.md`, `GEMINI_CMD.md`, `GEMINI_OUTPUT.md`, `GEMINI_CHAT_*.md`, `p_00_clean.sh`, `Pipfile`, `Pipfile.lock`, `.venv` を削除します。
+- `p_00_clean.sh`
+  - スクリプトクリーンファイル
+    - このスクリプトは、`p_*.py`, `p_*.diff` を削除します。
+- `p_01_http_mcp_test.py`
+  - HTTP/SSE MCPサーバーテストスクリプト
+    - HTTP/SSEインターフェースの動作を確認するための簡易テストスクリプトです。
+- `p_02_mcp_full_test.py`
+  - MCP包括テストスクリプト
+    - ObsidianプラグインのMCPサーバー（TCPおよびHTTP/SSEインターフェース）の全機能をテストします。
+- `p_03_gemini_md_test.py`
+  - GEMINI.mdアクセス制限テストスクリプト
+    - GEMINI.mdがリソースリストに含まれること、および書き込みが制限されていることを確認します。
