@@ -81,34 +81,19 @@
 - 以下のタブエリアを設ける。タイトルを「MCP Client Configration」とする。各タブにはテキストを設置する。TCPポート設定が変更されたら即座にテキストを更新する。
   - nc
     ```
-    "mcp_servers": {
-      "obsidian-mcp-server": {
-        "command": "nc",
-        "args": ["127.0.0.1", "8080"]
-      }
-    }
+    gemini mcp add obsidianMcpServer nc "127.0.0.1" "28088"
     ```  
   - wsl.exe
     ```
-    "mcp_servers": {
-      "obsidian-mcp-server": {
-        "command": "wsl.exe",
-        "args": ["nc", "127.0.0.1", "8080"]
-      }
-    }
+    gemini mcp add obsidianMcpServer "wsl.exe" "ncat.exe" "127.0.0.1" "28088"
     ```  
-  - 
+  - ncat.exe
     ```
-    "mcp_servers": {
-      "obsidian-mcp-server": {
-        "command": "ncat.exe",
-        "args": ["127.0.0.1", "8080"]
-      }
-    }
+    gemini mcp add obsidianMcpServer ncat.exe "127.0.0.1" "28088"
     ```  
  - タブ領域の下部に以下を設置する。
   - `CopyToClipboard`ボタンを設置し、ボタン押下でタブ部に表示されているテキストをクリップボードにコピーする。
-  - ボタンの横に `Add to ~/.gemini/settings.json` を記載する。
+  - ボタンの横に `See .gemini/settings.json` を記載する。
 
 - 以下のエリアを設ける。タイトルを「MCP Log」とする。
   - テキストエリアを設け15行程度で横幅は最大とする
@@ -121,8 +106,11 @@
       - https://github.com/modelcontextprotocol/typescript-sdk/blob/main/docs/server.md
       - https://github.com/modelcontextprotocol/typescript-sdk/blob/main/examples/server/src/simpleStreamableHttp.ts
       - https://modelcontextprotocol.io/docs/learn/server-concepts
-  - 名称を `obsidian-mcp-server` とする
+  - 名称を `obsidianMcpServer` とする
   - 説明を 「GEMINI.md を提供する」 とする
+  - MCPサーバーとして tcp接続と http/sse接続を実装する。
+    - tcp モードはデフォルトで、PORT:28088 とする
+    - http/sse モードはデフォルトで、PORT:28089 とする    
   - MCPサーバーとして以下の機能をMCPクライアントに提供する
     - カテゴリ:prompt
       - 名称:GEMINI.md
@@ -167,7 +155,7 @@
       - 名称:`get_datetime`
         - 説明:現在時刻（ローカルタイム）を取得する。
         - 動作
-          - 現在時刻（ローカルタイム）を返す。フォーマットは `yyyy-MM-dd hh:mm-ss`
+          - 現在時刻（ローカルタイム）を返す。フォーマットは `yyyy-MM-dd hh:mm:ss`
       - 名称:`report_directory`
         - 説明:現在の作業ディレクトリを Obsidianに通知する。
         - パラメーター:dir（必須）
@@ -178,6 +166,8 @@
   - 出力は、時刻：リクエスト とする。
   
 - プラグイン起動時は、TCP機能を OFF とする。
+
+- プラグインが無効となった場合、MCPサーバーの機能を停止する。
 
 # その他
 

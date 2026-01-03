@@ -12,8 +12,8 @@ interface PluginSettings {
 
 const VIEW_TYPE_GEMINI = "gemini-workspace-view";
 
-const DEFAULT_COMMAND_TEXT = `Retrieve prompt from Obsidian (prompt/get system_prompt)
-Retrieve GEMINI.md from Obsidian (prompt/get GEMINI.md)
+const DEFAULT_COMMAND_TEXT = `Retrieve prompt from Obsidian (propmp/get system_prompt)
+Retrieve GEMINI.md from Obsidian (propmp/get GEMINI.md)
 Output plan to Obsidian (GEMINI_PLAN.md)
 Output session response to Obsidian (GEMINI_RESP.md)
 Output session summary to Obsidian (GEMINI_SUMMARY.md)
@@ -31,8 +31,8 @@ const DEFAULT_IGNORE_PATTERNS = `^[_.].+$
 ^.+(?<!(.md))$`;
 
 const DEFAULT_SETTINGS: PluginSettings = {
-	tcpPort: 8080,
-	httpPort: 8081,
+	tcpPort: 28088,
+	httpPort: 28089,
 	systemPromptNote: '',
 	systemPromptAdd: '',
 	commandText: DEFAULT_COMMAND_TEXT,
@@ -408,30 +408,15 @@ class GeminiWorkspaceView extends ItemView {
 
 	buildMcpClientConfigArea(container: Element) {
 		const area = container.createEl("div", { cls: "gemini-section-area" });
-		area.createEl("h3", { text: "MCP Client Configuration" });
+		area.createEl("h3", { text: "MCP Client Configration" });
 
 		const tabsContainer = area.createEl("div", { cls: "gemini-tabs" });
 		const contentContainer = area.createEl("div", { cls: "gemini-tab-content" });
 
 		const configs: Record<string, string> = {
-			'nc': `"mcpServers": {
-  "obsidianMcpServer": {
-    "command": "nc",
-    "args": ["127.0.0.1", "${this.plugin.settings.tcpPort}"]
-  }
-}`,
-			'wsl.exe': `"mcpServers": {
-  "obsidianMcpServer": {
-    "command": "wsl.exe",
-    "args": ["nc", "127.0.0.1", "${this.plugin.settings.tcpPort}"]
-  }
-}`,
-			'ncat.exe': `"mcpServers": {
-  "obsidianMcpServer": {
-    "command": "ncat.exe",
-    "args": ["127.0.0.1", "${this.plugin.settings.tcpPort}"]
-  }
-}`
+			'nc': `gemini mcp add obsidianMcpServer nc "127.0.0.1" "${this.plugin.settings.tcpPort}"`,
+			'wsl.exe': `gemini mcp add obsidianMcpServer "wsl.exe" "ncat.exe" "127.0.0.1" "${this.plugin.settings.tcpPort}"`,
+			'ncat.exe': `gemini mcp add obsidianMcpServer ncat.exe "127.0.0.1" "${this.plugin.settings.tcpPort}"`
 		};
 
 		const tabNames = Object.keys(configs);
@@ -461,7 +446,7 @@ class GeminiWorkspaceView extends ItemView {
             copyBtn.onclick = () => {
                 navigator.clipboard.writeText(configs[activeTab]);
             };
-            controls.createEl("span", { text: " Add to ~/.gemini/settings.json" });
+            controls.createEl("span", { text: " See .gemini/settings.json" });
         };
 
         renderTabs();
