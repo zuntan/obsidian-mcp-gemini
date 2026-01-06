@@ -561,7 +561,6 @@ export class McpServer {
     			"GEMINI_RESP.md",
     			"GEMINI_CMD.md",
     			"GEMINI_OUTPUT.md",
-    			"GEMINI_CHAT.md",
                 "GEMINI_SUMMARY.md",
                 "GEMINI.md"
             ];
@@ -642,7 +641,6 @@ export class McpServer {
 			"GEMINI_RESP.md",
 			"GEMINI_CMD.md",
 			"GEMINI_OUTPUT.md",
-			"GEMINI_CHAT.md",
             "GEMINI_SUMMARY.md",
             "GEMINI.md",
             "SystemPrompt"

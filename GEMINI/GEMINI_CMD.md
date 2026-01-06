@@ -59,3 +59,20 @@ date +"%Y-%m-%dT%H:%M:%S%z"
 date +"%Y-%m-%dT%H:%M:%S%z"
 # <2026-01-03T15:41:01+0900>
 npm run build && python3 p_04_create_dist_zip.py && unzip -l obsidian-mcp-gemini3.zip
+
+# <2026-01-06T12:00:00+09:00>
+date +"%Y-%m-%dT%H:%M:%S"
+# <2026-01-06T12:07:00+09:00>
+python3 GEMINI/p_02_mcp_full_test.py tcp
+# <2026-01-06T12:10:00+09:00>
+python3 GEMINI/p_02_mcp_full_test.py tcp
+# <2026-01-06T12:11:00+09:00>
+python3 GEMINI/p_02_mcp_full_test.py http
+
+# <2026-01-06T13:50:00+09:00>
+npm run build
+# <2026-01-06T13:51:00+09:00>
+python3 GEMINI/p_02_mcp_full_test.py tcp
+
+# <2026-01-06T13:57:00+09:00>
+python3 GEMINI/p_04_create_dist_zip.py && unzip -l obsidian-mcp-gemini3.zip

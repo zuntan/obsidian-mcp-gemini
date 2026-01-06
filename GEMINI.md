@@ -13,8 +13,8 @@
 - テキストボックスを設置、名称を「Command Text」とする。15行程度。横幅は最大とする
   - 初期値、以下を英訳する
       ```
-      Obsidianよりプロンプトを取得（SystemPrompt）
       ObsidianよりGEMINI.mdを取得（GEMINI.md）
+      Obsidianよりプロンプトを取得（SystemPrompt）
       Obsidianへプランを出力（GEMINI_PLAN.md）
       Obsidianへセッションの応答を出力（GEMINI_RESP.md）
       Obsidianへセッションの要約を出力（GEMINI_SUMMARY.md）
@@ -47,11 +47,11 @@
     2. エディタが空の場合、ファイルエクスプローラー（ファイルツリー）で選択されているファイルまたはフォルダ。
     3. いずれも特定できない場合はルートフォルダ。
  - 「GEMINI files」エリアを設け、以下を設置する
-  - 「選択されているフォルダ」に対して、GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_CHAT.md, GEMINI_SUMMARY.md の存在を確認する。
+  - 「選択されているフォルダ」に対して、GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_SUMMARY.md の存在を確認する。
       - それぞれのファイルに対し、ファイルが存在する場合は、更新時刻を表示する。ファイルが存在しない場合は `CREAET` ボタンを有効とする。
       - ファイル名部分リンク状とし、クリックしたら、 Editor にそれを表示する。
       - `CREAET`ボタンをクリックしたら、 そのファイルを新規作成し、Editor にそれを表示する。
-  - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_SUMMARY.md, GEMINI_OUTPUT.md, GEMINI_CHAT.md, GEMINI_SUMMARY.md の部分は表形式とする。
+  - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_SUMMARY.md, GEMINI_OUTPUT.md, GEMINI_SUMMARY.md の部分は表形式とする。
   - `Refresh`ボタンを設け、ボタンを押下で以下を実施する
     1. 選択フォルダの再特定:
       現在のアクティブなエディタやファイルエクスプローラーの選択状態から、対象とするフォルダを特定し直します。
@@ -65,7 +65,7 @@
   - 「選択されているフォルダ」に対して以下の条件を満たすファイルを対象とする。
     - 条件
       - 「選択されているフォルダ」直下のファイル
-      - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_CHAT.md, GEMINI_SUMMARY.md 以外のファイル
+      - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_SUMMARY.md 以外のファイル
       - 「Resource ignore patterns」の各行で定義されている正規表現パターンにマッチしないファイル
     - それぞれのファイルに対し、ファイルが存在する場合は、更新時刻を表示する。
     - ファイル名部分リンク状とし、クリックしたら、 Editor にそれを表示する。
@@ -120,7 +120,7 @@
     - カテゴリ:resources
       - 以下を対象とする
         - 「選択されているフォルダ」直下のファイル（サブフォルダ配下のファイルは対象外とする）
-        - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_CHAT.md ファイル
+        - GEMINI.md, GEMINI_PLAN.md, GEMINI_RESP.md, GEMINI_CMD.md, GEMINI_OUTPUT.md, GEMINI_SUMMARY.md ファイル
         - SystemPrompt 
         - 上記以外で「Resource ignore patterns」の各行で定義されている正規表現パターンにマッチしないファイル
     - カテゴリ:tools

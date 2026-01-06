@@ -12,8 +12,8 @@ interface PluginSettings {
 
 const VIEW_TYPE_GEMINI = "gemini-workspace-view";
 
-const DEFAULT_COMMAND_TEXT = `Retrieve prompt from Obsidian (SystemPrompt)
-Retrieve GEMINI.md from Obsidian (GEMINI.md)
+const DEFAULT_COMMAND_TEXT = `Retrieve GEMINI.md from Obsidian (GEMINI.md)
+Retrieve prompt from Obsidian (SystemPrompt)
 Output plan to Obsidian (GEMINI_PLAN.md)
 Output session response to Obsidian (GEMINI_RESP.md)
 Output session summary to Obsidian (GEMINI_SUMMARY.md)
@@ -218,7 +218,6 @@ class GeminiWorkspaceView extends ItemView {
 			"GEMINI_RESP.md",
 			"GEMINI_CMD.md",
 			"GEMINI_OUTPUT.md",
-			"GEMINI_CHAT.md",
             "GEMINI_SUMMARY.md"
 		];
 
@@ -287,7 +286,6 @@ class GeminiWorkspaceView extends ItemView {
 			"GEMINI_RESP.md",
 			"GEMINI_CMD.md",
 			"GEMINI_OUTPUT.md",
-			"GEMINI_CHAT.md",
             "GEMINI_SUMMARY.md"
 		];
 

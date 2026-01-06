@@ -7,8 +7,8 @@ import sys
 import os
 
 # Configuration
-TCP_PORT = 8080
-HTTP_PORT = 8081
+TCP_PORT = 28088
+HTTP_PORT = 28089
 BASE_URL = f"http://localhost:{HTTP_PORT}"
 
 # --- Helper Functions ---
@@ -305,7 +305,7 @@ def run_all_mcp_tests(client_instance):
     prompts_list_res = client_instance.send_request("prompts/list")
     assert prompts_list_res and prompts_list_res.get('result'), "Prompts list failed"
     assert any(p['name'] == 'GEMINI.md' for p in prompts_list_res['result']['prompts']), "GEMINI.md prompt not found"
-    assert any(p['name'] == 'system_prompt' for p in prompts_list_res['result']['prompts']), "system_prompt not found"
+    assert any(p['name'] == 'SystemPrompt' for p in prompts_list_res['result']['prompts']), "SystemPrompt not found"
     print("Prompts list successful.")
     time.sleep(0.5)
 
@@ -317,11 +317,11 @@ def run_all_mcp_tests(client_instance):
     print("Prompts/get GEMINI.md successful.")
     time.sleep(0.5)
 
-    # 6. prompts/get (system_prompt) - requires configuration in Obsidian
-    print_separator("Testing prompts/get (system_prompt)")
-    sys_prompt_res = client_instance.send_request("prompts/get", {"name": "system_prompt"})
-    assert sys_prompt_res and sys_prompt_res.get('result'), "prompts/get system_prompt failed"
-    print("Prompts/get system_prompt successful (content depends on Obsidian config).")
+    # 6. prompts/get (SystemPrompt) - requires configuration in Obsidian
+    print_separator("Testing prompts/get (SystemPrompt)")
+    sys_prompt_res = client_instance.send_request("prompts/get", {"name": "SystemPrompt"})
+    assert sys_prompt_res and sys_prompt_res.get('result'), "prompts/get SystemPrompt failed"
+    print("Prompts/get SystemPrompt successful (content depends on Obsidian config).")
     time.sleep(0.5)
 
     # 7. resources/list
