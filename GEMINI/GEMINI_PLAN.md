@@ -35,5 +35,5 @@
 [x] 33. GEMINI.md修正への対応 (Command Text初期値変更、Configration -> Configuration のスペル修正) ( 2026-01-03T15:41:00+09:00 ) { 33 } /* main.ts の DEFAULT_COMMAND_TEXT とエリアタイトルを修正。 */
 [x] 34. ビルドと配布用 zip ファイルの作成 ( 2026-01-03T15:42:00+09:00 ) { 34 } /* npm run build と p_04_create_dist_zip.py を実行。 */
 [x] 35. 新セッションでの動作確認とテストスクリプト修正 ( 2026-01-06T13:47:00+09:00 ) { 35 } /* p_02_mcp_full_test.pyのポート番号とプロンプト名を修正し、TCP/HTTP全テスト通過を確認。 */
-[x] 36. GEMINI.md更新対応 (Command Text順序変更、GEMINI_CHAT.md除外) ( 2026-01-06T13:53:00+09:00 ) { 36 } /* main.ts と mcp-server.ts を修正し、GEMINI_CHAT.md を Workspace およびリソースから除外。Command Text の初期値を更新。 */
-[x] 37. 最新版 zip ファイルの作成 ( 2026-01-06T13:58:00+09:00 ) { 37 } /* p_04_create_dist_zip.py を実行し、最新修正を反映した obsidian-mcp-gemini3.zip を作成。 */
+[x] 36. GEMINI.md更新対応 (Command Text順序変更、MCP Client Configuration修正、GEMINI_CHATリソース化) ( 2026-01-07T09:20:00+09:00 ) { 36 } /* main.ts と mcp-server.ts を修正。GEMINI_CHAT 関連ファイルはリソースとして扱うように戻し、Configuration タブを GEMINI.md の記述に完全準拠させた。 */
+[x] 37. 最新版 zip ファイルの作成 ( 2026-01-07T09:25:00+09:00 ) { 37 } /* tcp-bridge ディレクトリを含むように p_04_create_dist_zip.py を修正し、obsidian-mcp-gemini3.zip を再作成。 */

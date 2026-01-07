@@ -83,13 +83,13 @@
     ```
     gemini mcp add obsidianMcpServer nc "127.0.0.1" "28088"
     ```  
-  - wsl.exe
+  - tcp-bridge.js
     ```
-    gemini mcp add obsidianMcpServer "wsl.exe" "ncat.exe" "127.0.0.1" "28088"
-    ```  
-  - ncat.exe
+    gemini mcp add obsidianMcpServer node /path/to/tcp-bridge.js "127.0.0.1" "28088"
+    ```    
+  - tcp-bridge.ps1(windows)
     ```
-    gemini mcp add obsidianMcpServer ncat.exe "127.0.0.1" "28088"
+    gemini mcp add obsidianMcpServer tcp-bridge.ps1 "127.0.0.1" "28088"
     ```  
  - タブ領域の下部に以下を設置する。
   - `CopyToClipboard`ボタンを設置し、ボタン押下でタブ部に表示されているテキストをクリップボードにコピーする。

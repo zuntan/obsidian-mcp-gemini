@@ -413,8 +413,8 @@ class GeminiWorkspaceView extends ItemView {
 
 		const configs: Record<string, string> = {
 			'nc': `gemini mcp add obsidianMcpServer nc "127.0.0.1" "${this.plugin.settings.tcpPort}"`,
-			'wsl.exe': `gemini mcp add obsidianMcpServer "wsl.exe" "ncat.exe" "127.0.0.1" "${this.plugin.settings.tcpPort}"`,
-			'ncat.exe': `gemini mcp add obsidianMcpServer ncat.exe "127.0.0.1" "${this.plugin.settings.tcpPort}"`
+			'tcp-bridge.js': `gemini mcp add obsidianMcpServer node /path/to/tcp-bridge.js "127.0.0.1" "${this.plugin.settings.tcpPort}"`,
+			'tcp-bridge.ps1(windows)': `gemini mcp add obsidianMcpServer tcp-bridge.ps1 "127.0.0.1" "${this.plugin.settings.tcpPort}"`
 		};
 
 		const tabNames = Object.keys(configs);
